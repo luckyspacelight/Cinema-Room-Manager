@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -11,6 +12,34 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Cinema Room Manager/task" />
+            <option value="$PROJECT_DIR$/Cinema Room Manager/task/build/classes/java" />
+            <option value="$PROJECT_DIR$/Cinema Room Manager/task/build/generated/sources/annotationProcessor/java" />
+            <option value="$PROJECT_DIR$/Cinema Room Manager/task/build/generated/sources/headers/java" />
+            <option value="$PROJECT_DIR$/Cinema Room Manager/task/build/reports/tests" />
+            <option value="$PROJECT_DIR$/Cinema Room Manager/task/build/test-results" />
+            <option value="$PROJECT_DIR$/Cinema Room Manager/task/build/tmp" />
+            <option value="$PROJECT_DIR$/Topics/Iterating over arrays/Boxes" />
+            <option value="$PROJECT_DIR$/Topics/Iterating over arrays/Find the sum" />
+            <option value="$PROJECT_DIR$/Topics/Iterating over arrays/Select loops" />
+            <option value="$PROJECT_DIR$/Topics/Iterating over arrays/Select one loop" />
+            <option value="$PROJECT_DIR$/Topics/Iterating over arrays/Sum array elements greater than a value" />
+            <option value="$PROJECT_DIR$/Topics/Iterating over arrays/The minimum value of an array" />
+            <option value="$PROJECT_DIR$/Topics/Iterating over arrays/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Multidimensional array/Indexing rules" />
+            <option value="$PROJECT_DIR$/Topics/Multidimensional array/Multidimensional array features" />
+            <option value="$PROJECT_DIR$/Topics/Multidimensional array/Practical applications" />
+            <option value="$PROJECT_DIR$/Topics/Multidimensional array/Printing lengths of nested arrays" />
+            <option value="$PROJECT_DIR$/Topics/Multidimensional array/Rotate a rectangle array" />
+            <option value="$PROJECT_DIR$/Topics/Multidimensional array/Theory" />
+            <option value="$PROJECT_DIR$/Topics/String/ Hello  string" />
+            <option value="$PROJECT_DIR$/Topics/String/Appending strings and ints" />
+            <option value="$PROJECT_DIR$/Topics/String/Check prefix ignoring the case" />
+            <option value="$PROJECT_DIR$/Topics/String/Extracting a substring" />
+            <option value="$PROJECT_DIR$/Topics/String/Find true expressions" />
+            <option value="$PROJECT_DIR$/Topics/String/Finding string expressions" />
+            <option value="$PROJECT_DIR$/Topics/String/Operations with strings" />
+            <option value="$PROJECT_DIR$/Topics/String/Replacing 'a' with 'b'" />
+            <option value="$PROJECT_DIR$/Topics/String/Theory" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>

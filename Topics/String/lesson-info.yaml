@@ -1,0 +1,10 @@
+content:
+- Theory
+- Finding string expressions
+- Operations with strings
+- Extracting a substring
+- ' Hello  string'
+- Replacing 'a' with 'b'
+- Appending strings and ints
+- Find true expressions
+- Check prefix ignoring the case

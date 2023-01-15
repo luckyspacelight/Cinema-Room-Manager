@@ -1,0 +1,23 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: 'The number of indices is equal to the dimension of the main array '
+- text: It depends on the type of array
+- text: The number of indices is equal to the dimension of the main array minus 1
+- text: One index
+files:
+- name: src/Task.java
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    public class Task {
+      public static void main(String[] args) {
+        // put your code here
+      }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/12439#comment
+status: Solved
+record: -1
+local_check: false
