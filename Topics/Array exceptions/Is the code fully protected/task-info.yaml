@@ -1,0 +1,25 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: "No, it may throw StringIndexOutOfBoundsException"
+- text: "No, it may throw ArithmeticException"
+- text: "No, it may throw NullPointerException."
+- text: "Yes, we've checked the string is not null and the index is within the length\
+    \ of the array"
+files:
+- name: src/Task.java
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    public class Task {
+      public static void main(String[] args) {
+        // put your code here
+      }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/2471#comment
+status: Solved
+record: -1
+custom_name: Is the code fully protected?
+local_check: false

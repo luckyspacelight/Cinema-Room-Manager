@@ -7,27 +7,46 @@ public class Cinema {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static String[][] createTheCinemaTheatre() {
 
         int rows = readNumbers("\nEnter the number of rows:");
         int cols = readNumbers("Enter the number of seats in each row:");
 
-        int action;
+        String[][] seats = new String[rows][cols];
+
+        for (String[] row : seats) {
+            Arrays.fill(row, "S");
+        }
+        return seats;
+    }
+
+    public static void main(String[] args) {
+
         boolean isActive = true;
-        int rowNumber = 0;
-        int seatNumber = 0;
-        boolean isEmpty = true; //Array seats
-        String [][] seats = new String[rows][cols];
+        int action = -1;
+        int purchasedTickets = 0;
+        int currentIncome = 0;
+
+        // *** CINEMA INITIALIZE
+        // Create the seats in the room
+        String[][] seats = createTheCinemaTheatre();
+        // Determine total income
+        int totalIncome = determineTotalIncome(seats.length, seats[0].length);
+        // Determine total tickets
+        int totalTickets = seats.length *  seats[0].length;
 
         while (isActive) {
             action = viewMenu();
             switch (action) {
-                case 1 -> isEmpty = printCinema(rows, cols, rowNumber, seatNumber, seats, isEmpty);
+                case 1 -> showTheSeats(seats);
                 case 2 -> {
-                    rowNumber = readNumbers("\nEnter a row number:");
-                    seatNumber = readNumbers("Enter a seat number in that row:");
-                    determineTicketPrice(rows, cols, rowNumber);
+                    int tmpTicketPrice = buyATicket(seats);
+                    if (tmpTicketPrice != 0) {
+                        currentIncome += tmpTicketPrice;   // Update current Income
+                        purchasedTickets++;                // Update purchased tickets
+                    }
                 }
+                case 3 -> showStatistics(purchasedTickets, currentIncome, totalIncome, totalTickets);
                 case 0 -> isActive = false;
             }
         }
@@ -37,6 +56,7 @@ public class Cinema {
         String menu = """
                 \n1. Show the seats
                 2. Buy a ticket
+                3. Statistics
                 0. Exit
                 """;
         System.out.print(menu);
@@ -48,23 +68,12 @@ public class Cinema {
         return scanner.nextInt();
     }
 
-    private static boolean printCinema
-            (int rows, int cols,
-             int sRow, int sSeat,
-             String[][] seats, boolean isEmpty) {
+    private static void showTheSeats(String[][] seats) {
 
         System.out.println("\nCinema:");
 
-        // Fill the seats array if it is empty
-        if (isEmpty) {
-            for (String[] row : seats) {
-                Arrays.fill(row, "S");
-            }
-            isEmpty = false;
-        }
-
         //Print the header
-        for (int i = 0; i <= cols; i++) {
+        for (int i = 0; i <= seats[0].length; i++) {
             if (i == 0) {
                 System.out.print("  ");
             } else {
@@ -77,17 +86,39 @@ public class Cinema {
         for (int i = 0; i < seats.length; i++) {
             System.out.printf("%d ", i + 1);  // Row numbers
             for (int j = 0; j < seats[i].length; j++) {
-                if (sRow == i + 1 && sSeat == j + 1) {
-                    seats[i][j] = "B";
-                }
                 System.out.printf("%s ", seats[i][j]);
             }
             System.out.printf("%n");
         }
-        return isEmpty;
     }
 
-    private static void determineTicketPrice(int rowsNumber, int seatsPerRow, int rowNumber) {
+    private static int buyATicket(String[][] seats) {
+
+        boolean isAlreadyPurchased = false;
+
+        do {
+            int rowNumber = readNumbers("\nEnter a row number:");
+            int seatNumber = readNumbers("Enter a seat number in that row:");
+
+            if(rowNumber > seats.length || seatNumber > seats[0].length) {
+                System.out.println("\nWrong input!");
+                return 0;
+            }
+
+            if (seats[rowNumber - 1][seatNumber - 1].equals("B")) {
+                System.out.println("\nThat ticket has already been purchased!");
+                isAlreadyPurchased = true;
+            } else {
+                seats[rowNumber - 1][seatNumber - 1] = "B";
+                return determineTicketPrice(seats.length, seats[0].length, rowNumber);
+            }
+
+        } while (isAlreadyPurchased);
+
+        return 0;
+    }
+
+    private static int determineTicketPrice(int rowsNumber, int seatsPerRow, int rowNumber) {
 
         // Total seats
         int seatsTotalNumber = rowsNumber * seatsPerRow;
@@ -100,5 +131,38 @@ public class Cinema {
 
         // Print ticket price
         System.out.printf("%nTicket price: $%d%n", ticketPrice);
+        return ticketPrice;
+    }
+
+    private static int determineTotalIncome(int rowsNumber, int seatsPerRow) {
+
+        int seatsTotalNumber = rowsNumber * seatsPerRow;
+
+        int ticketPrice = 10;
+        int backtHalfTicketPrice = 8;
+        int TotalIncome = 0;
+        int frontHalfSeats = 0;
+        int backHalfSeats = 0;
+
+        if (seatsTotalNumber <= 60) {
+            TotalIncome = seatsTotalNumber * ticketPrice;
+        } else if (seatsTotalNumber > 60) {
+            frontHalfSeats = rowsNumber / 2 * seatsPerRow;
+            backHalfSeats = (rowsNumber - (rowsNumber / 2)) * seatsPerRow;
+            TotalIncome = frontHalfSeats * ticketPrice + backHalfSeats * backtHalfTicketPrice;
+        }
+
+        return TotalIncome;
+    }
+
+    private static void showStatistics(int purchasedTickets, int currentIncome, int totalIncome, int totalTickets) {
+
+        float percentage = (float) purchasedTickets / totalTickets * 100;
+
+        System.out.printf("%nNumber of purchased tickets: %d", purchasedTickets);
+        System.out.printf("%nPercentage: %.2f%%", percentage);
+        System.out.printf("%nCurrent income: $%d", currentIncome);
+        System.out.printf("%nTotal income: $%d%n", totalIncome);
+
     }
 }

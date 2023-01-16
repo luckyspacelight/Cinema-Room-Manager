@@ -1,0 +1,23 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: "char[] characters = new char[555];"
+- text: "char[] characters = new char[0];"
+- text: "char[] characters = new char[-5];"
+- text: "char[] characters = new char[1];"
+files:
+- name: src/Task.java
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    public class Task {
+      public static void main(String[] args) {
+        // put your code here
+      }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/1942#comment
+status: Solved
+record: -1
+local_check: false
